@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
 
-    public float timeLife = 3.0f;
+    public float timeLife = 10.0f;
     void Start()
     {
 
@@ -18,10 +19,11 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
 
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<Enemy>().Hit();
 
 
             Destroy(gameObject);
         }
     }
+
 }
